@@ -13,7 +13,7 @@ spec:
     namespace: redis
 
   sources:
-    - repoURL: https://charts.bitnami.com/bitnami
+    - repoURL: registry-1.docker.io/bitnamicharts
       chart: redis
       targetRevision: 25.4.1
       helm:
