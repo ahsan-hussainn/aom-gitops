@@ -41,13 +41,7 @@ metrics:
   enabled: false
 
 ingress:
-  enabled: true
-  hostname: minio.local
-  ingressClassName: nginx
-  tls: false
+  enabled: false
 
 apiIngress:
-  enabled: true
-  hostname: minio-api.local
-  ingressClassName: nginx
-  tls: false
+  enabled: false
