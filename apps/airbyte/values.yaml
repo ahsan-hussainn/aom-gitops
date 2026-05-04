@@ -1,0 +1,28 @@
+global:
+  airbyteUrl: http://airbyte.local
+  edition: community
+  auth:
+    enabled: false
+
+webapp:
+  ingress:
+    enabled: true
+    className: nginx
+    hosts:
+      - host: airbyte.local
+        paths:
+          - path: /
+            pathType: Prefix
+
+worker:
+  replicaCount: 1
+
+server:
+  replicaCount: 1
+
+minio:
+  storage:
+    volumeClaimValue: 1Gi
+
+postgresql:
+  enabled: true
