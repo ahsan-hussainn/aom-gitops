@@ -18,7 +18,7 @@ spec:
     path: apps/ingresses
     directory:
       recurse: false
-      include: "{argocd.yaml,dagster.yaml,minio.yaml}"
+      include: "{argocd.yaml,dagster.yaml,minio.yaml,airbyte.yaml}"
 
   syncPolicy:
     automated:

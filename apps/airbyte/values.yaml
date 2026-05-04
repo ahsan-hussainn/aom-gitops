@@ -4,16 +4,10 @@ global:
   auth:
     enabled: false
 
+# Airbyte 1.8 retired the standalone webapp; airbyte-server serves
+# both API and UI on :8001. No image is published at airbyte/webapp:1.8.x.
 webapp:
-  enabled: true
-  ingress:
-    enabled: true
-    className: nginx
-    hosts:
-      - host: airbyte.local
-        paths:
-          - path: /
-            pathType: Prefix
+  enabled: false
 
 worker:
   replicaCount: 1
