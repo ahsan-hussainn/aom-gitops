@@ -25,6 +25,12 @@ spec:
       targetRevision: dev
       ref: values
 
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /status/terminatingReplicas
+
   syncPolicy:
     automated:
       prune: true
