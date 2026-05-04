@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingresses
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  source:
+    repoURL: https://github.com/ahsanhussain-max/aom-gitops-demo
+    targetRevision: dev
+    path: apps/ingresses
+    directory:
+      recurse: false
+      include: "{argocd.yaml,dagster.yaml,minio.yaml}"
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
