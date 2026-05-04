@@ -1,0 +1,33 @@
+mode: standalone
+
+auth:
+  rootUser: admin
+  rootPassword: admin12345
+
+persistence:
+  enabled: false
+
+defaultBuckets: "practice"
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 768Mi
+
+metrics:
+  enabled: false
+
+ingress:
+  enabled: true
+  hostname: minio.local
+  ingressClassName: nginx
+  tls: false
+
+apiIngress:
+  enabled: true
+  hostname: minio-api.local
+  ingressClassName: nginx
+  tls: false
