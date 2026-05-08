@@ -1,30 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: redis
+  name: strimzi-operator
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-10"
 spec:
   project: default
-
   destination:
     server: https://kubernetes.default.svc
-    namespace: redis
-
+    namespace: strimzi-system
   sources:
-    - repoURL: registry-1.docker.io/bitnamicharts
-      chart: redis
-      targetRevision: 25.4.1
+    - repoURL: quay.io/strimzi-helm
+      chart: strimzi-kafka-operator
+      targetRevision: 0.45.0
       helm:
-        releaseName: redis
+        releaseName: strimzi
         valueFiles:
-          - $values/apps/redis/values.yaml
-
+          - $values/apps/strimzi-operator/values.yaml
     - repoURL: https://github.com/ahsanhussain-max/aom-gitops-demo
       targetRevision: dev
       ref: values
-
   syncPolicy:
     automated:
       prune: true

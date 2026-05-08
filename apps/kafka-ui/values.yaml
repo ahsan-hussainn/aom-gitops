@@ -1,0 +1,28 @@
+yamlApplicationConfig:
+  kafka:
+    clusters:
+      - name: aom-kafka
+        bootstrapServers: aom-kafka-kafka-bootstrap.kafka.svc.cluster.local:9092
+        kafkaConnect:
+          - name: debezium-connect
+            address: http://debezium-connect-connect-api.kafka.svc.cluster.local:8083
+  auth:
+    type: disabled
+  management:
+    health:
+      ldap:
+        enabled: false
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  host: kafka-ui.local
+  pathType: Prefix
