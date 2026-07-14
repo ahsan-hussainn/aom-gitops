@@ -20,7 +20,7 @@ spec:
         releaseName: kafka-ui
         valueFiles:
           - $values/apps/kafka-ui/values.yaml
-    - repoURL: https://github.com/ahsanhussain-max/aom-gitops-demo
+    - repoURL: https://github.com/ahsan-hussainn/aom-gitops
       targetRevision: dev
       ref: values
   syncPolicy:

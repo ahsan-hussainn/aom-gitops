@@ -1,26 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: postgres-source
+  name: root
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "-100"
 spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: postgres-source
+    namespace: argocd
   source:
     repoURL: https://github.com/ahsan-hussainn/aom-gitops
     targetRevision: dev
-    path: apps/postgres-source/manifests
+    path: apps
     directory:
       recurse: true
+      include: '*/application.yaml'
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

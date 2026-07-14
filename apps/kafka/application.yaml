@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: kafka
   source:
-    repoURL: https://github.com/ahsanhussain-max/aom-gitops-demo
+    repoURL: https://github.com/ahsan-hussainn/aom-gitops
     targetRevision: dev
     path: apps/kafka/manifests
     directory:
